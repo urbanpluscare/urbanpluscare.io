@@ -449,10 +449,8 @@ emailjs.init({
   
       emailjs.send('service_ffn3avr', 'template_1egrq4k', templateParams)
         .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
           alert("Message sent successfully!");
         }, function(error) {
-          console.log('FAILED...', error);
           alert("Message failed to send. Please try again.");
         });
   
