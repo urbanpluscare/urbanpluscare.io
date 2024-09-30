@@ -299,7 +299,7 @@
         </div>
 
         <div class="col-lg-6">
-          <form id="contact-form"  method="post" enctype="multipart/form-data">
+          <form id="contact-form" action="https://formsubmit.co/info@urbanpluscare.com" onsubmit="return sendMail()" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-lg-12">
                 <fieldset>
@@ -310,7 +310,7 @@
               <div class="col-lg-12">
                 <fieldset>
                   <label for="PhoneNumber">Phone Number</label>
-                  <input type="number" name="Phone" id="phone" placeholder="Your Phone Number..." autocomplete="on" required>
+                  <input type="number" name="Phone" id="phone" placeholder="Your Phone Number..." autocomplete="on" min="1" required>
                 </fieldset>
               </div>
               <div class="col-lg-12">
@@ -333,7 +333,7 @@
               </div>
               <div class="col-lg-12">
                 <fieldset class="checkbox-fieldset pro-checkbox">
-                  <input type="checkbox" name="sms_consent" id="sms_consent" >
+                  <input type="checkbox" name="sms_consent" id="sms_consent">
                   <label for="sms_consent">By checking this box, you agree to receive text messages from Urban Plus Care. Reply STOP if you would like to stop receiving text messages.</label>
                 </fieldset>
               </div>              
@@ -409,6 +409,8 @@
     </div>
 </footer>
 
+
+
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -417,16 +419,44 @@
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script src="assets/js/script.js"></script>
-  <script type="text/javascript" 
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.js"></script>
   <script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "BlPTxiPfD9Fg0YW07",
-      });
-   })();
-</script>
+    (function() {
+      emailjs.init("YOUR_USBlPTxiPfD9Fg0YW07ER_ID");
+    })();
+  </script>
+  
+  
+  <script type="text/javascript">
+    function sendMail() {
+      // Check if the user has agreed to receive messages
+      var consent = document.getElementById("sms_consent").checked;
+
+      // Proceed if consent is given
+      var templateParams = {
+        from_name: document.getElementById("name").value,
+        phone_number: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value,
+        checked: consent ? "Yes" : "No", // Pass "Yes" or "No" based on consent
+      };
+  
+      emailjs.send('service_ffn3avr', 'template_1egrq4k', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert("Message sent successfully!");
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert("Message failed to send. Please try again.");
+        });
+  
+      // Prevent the default form submission
+      return false;
+    }
+  </script>
+  
+
+
   </body>
 </html>
