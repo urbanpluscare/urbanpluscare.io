@@ -419,12 +419,17 @@
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.js"></script>
-  <script type="text/javascript">
-    (function() {
-      emailjs.init("BlPTxiPfD9Fg0YW07");
-    })();
-  </script>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init({
+  publicKey: "BlPTxiPfD9Fg0YW07",
+});
+})();
+</script>
+  
   
   
   <script type="text/javascript">
