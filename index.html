@@ -297,13 +297,14 @@
             </div>
           </div>
         </div>
+
         <div class="col-lg-6">
-          <form id="contact-form" action="https://formsubmit.co/el/kihezi" method="POST">
+          <form id="contact-form"  method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-lg-12">
                 <fieldset>
                   <label for="name">Full Name</label>
-                  <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
+                  <input type="text" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-12">
@@ -330,38 +331,24 @@
                   <textarea name="message" id="message" placeholder="Your Message"></textarea>
                 </fieldset>
               </div>
-
               <div class="col-lg-12">
                 <fieldset class="checkbox-fieldset pro-checkbox">
                   <input type="checkbox" name="sms_consent" id="sms_consent" required>
                   <label for="sms_consent">By checking this box, you agree to receive text messages from Urban Plus Care. Reply STOP if you would like to stop receiving text messages.</label>
                 </fieldset>
-              </div>
-              
-              
+              </div>              
               <div class="col-lg-12">
                 <fieldset>
-                  <button type="submit" id="contact-form" class="orange-button">Send Message</button>
-                </fieldset>
+                  <button type="submit"  class="orange-button" onclick="sendMail()">Send Message</button>
+                </fieldset>   
               </div>
             </div>
           </form>
         </div>
-        <div class="col-lg-12">
-          <div id="map">
-            <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12517.845393321354!2d-77.53084773579773!3d38.91255553308909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x89b64190925a2d35%3A0x8f389722f53ffd97!2s25474%20Chambers%20Dr%2C%20Chantilly%2C%20VA%2020152%2C%20USA!5e1!3m2!1sen!2sus!4v1693965468268!5m2!1sen!2sus" 
-            width="100%" 
-            height="500px" 
-            frameborder="0" 
-            style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" 
-            allowfullscreen="true">
-        </iframe>       
-          </div>
-        </div>
       </div>
     </div>
   </div>
+
 
   <footer class="bg-dark" id="tempaltemo_footer">
     <div class="container">
