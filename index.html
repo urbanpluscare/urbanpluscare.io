@@ -342,7 +342,7 @@
               </div>              
               <div class="col-lg-12">
                 <fieldset>
-                  <button type="submit"  class="orange-button" onclick="sendMail()">Send Message</button>
+                  <button type="submit"  class="orange-button" >Send Message</button>
                 </fieldset>   
               </div>
             </div>
@@ -435,33 +435,45 @@ emailjs.init({
   
   
   
-  <script type="text/javascript">
-    function sendMail() {
+<script type="text/javascript">
+  function sendMail() {
+      // Get values from input fields
+      var name = document.getElementById("name").value;
+      var phone = document.getElementById("phone").value;
+      var email = document.getElementById("email").value;
+      var subject = document.getElementById("subject").value;
+      
+      // Check for null or empty values
+      if (!name || !phone || !email || !subject) {
+          alert("Please fill in all required fields.");
+          return false; // Stop the function execution
+      }
+
       // Check if the user has agreed to receive messages
       var consent = document.getElementById("sms_consent").checked;
 
       // Proceed if consent is given
       var templateParams = {
-        from_name: document.getElementById("name").value,
-        phone_number: document.getElementById("phone").value,
-        email: document.getElementById("email").value,
-        subject: document.getElementById("subject").value,
-        message: document.getElementById("message").value,
-        checked: consent ? "Yes" : "No", // Pass "Yes" or "No" based on consent
+          from_name: name,
+          phone_number: phone,
+          email: email,
+          subject: subject,
+          message: document.getElementById("message").value,
+          checked: consent ? "Yes" : "No", // Pass "Yes" or "No" based on consent
       };
-  
+
       emailjs.send('service_ffn3avr', 'template_1egrq4k', templateParams)
-        .then(function(response) {
-          alert("Message sent successfully!");
-        }, function(error) {
-          alert("Message failed to send. Please try again.");
-        });
-  
+          .then(function(response) {
+              alert("Message sent successfully!");
+          }, function(error) {
+              alert("Message failed to send. Please try again.");
+          });
+
       // Prevent the default form submission
       return false;
-    }
-  </script>
-  
+  }
+</script>
+
 
 
   </body>
